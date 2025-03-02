@@ -1,6 +1,6 @@
 package com.example.validator.validator;
 
-import com.example.validator.domain.entity.Violacao;
+import com.example.validator.domain.model.Violacao;
 
 import java.util.List;
 

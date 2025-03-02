@@ -1,4 +1,4 @@
-package com.example.validator.domain.entity;
+package com.example.validator.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

@@ -1,19 +1,27 @@
 package com.example.validator.exception;
 
-import com.example.validator.domain.entity.Violacao;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
-
-import java.util.List;
+import com.example.validator.domain.model.Error;
 
 @Getter
-public class ValidatorException extends RuntimeException {
+@JsonIgnoreProperties({"cause", "stackTrace", "localizedMessage", "suppressed"})
+public class ValidatorException extends Exception {
 
     @JsonProperty
-    private final List<Violacao> violacoes;
+    private Error error;
 
-    public ValidatorException(String title, List<Violacao> violacoes) {
-        super(title);
-        this.violacoes = violacoes;
+    @JsonProperty
+    private final String message;
+
+
+    public ValidatorException(String message, Error error) {
+        this.message = message;
+        this.error = error;
+    }
+
+    public ValidatorException(String message) {
+        this.message = message;
     }
 }

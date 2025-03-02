@@ -5,22 +5,22 @@ import com.example.validator.exception.ValidatorException;
 import com.example.validator.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-
-@RestController("/api/user")
+@RestController
+@RequestMapping("/api/user")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class UserControllerImpl {
 
     private final UserService userService;
 
-    @PostMapping
-    public ResponseEntity insertUser(UserRequestDto requestDto) {
+    @PostMapping()
+    public ResponseEntity<?> insertUser(@RequestBody UserRequestDto requestDto) {
         try {
             return ResponseEntity.ok().body(userService.insertUser(requestDto));
         } catch (ValidatorException ex){
-            return ResponseEntity.badRequest().body(ex);
+            return ResponseEntity.badRequest().body(ex.getError());
         }
     }
 }
