@@ -7,16 +7,17 @@ import java.util.List;
 
 public class ValidatorChain<T> {
 
-    private final List<Validator<T>> validadores = new ArrayList<>();
+    private final List<Validator<T>> validators = new ArrayList<>();
 
 
-    public void adicionarValidador(Validator<T> validador) {
-        validadores.add(validador);
+    public void addValidator(Validator<T> validador) {
+        validators.add(validador);
     }
 
     public List<Violacao> validar(T objeto) {
+
         List<Violacao> violacoes = new ArrayList<>();
-        validadores.forEach(validador -> validador.validate(objeto, violacoes));
+        validators.forEach(validator -> validator.validate(objeto, violacoes));
 
         return violacoes;
     }

@@ -12,9 +12,12 @@ public class ValidatorChainFactory {
 
     @Bean
     public ValidatorChain<UserRequestDto> userValidatorChain() {
+
         ValidatorChain<UserRequestDto> validatorChain = new ValidatorChain<>();
-        validatorChain.adicionarValidador(new NomeValidator());
-        validatorChain.adicionarValidador(new EmailValidator());
+
+        validatorChain.addValidator(new NomeValidator());
+        validatorChain.addValidator(new EmailValidator());
+
         return validatorChain;
     }
 }
