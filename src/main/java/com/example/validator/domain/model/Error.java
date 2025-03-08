@@ -13,7 +13,7 @@ public class Error {
     private String detalhe;
 
     @JsonProperty
-    private List<Violacao> violacoes;
+    private List<Violation> violacoes;
 
     @JsonProperty
     private HttpStatus httpStatus;

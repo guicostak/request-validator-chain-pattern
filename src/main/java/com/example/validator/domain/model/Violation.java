@@ -8,11 +8,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Data
-public class Violacao {
+public class Violation {
 
     @JsonProperty
-    private String campo;
+    private String field;
 
     @JsonProperty
-    private String mensagem;
+    private String message;
 }
