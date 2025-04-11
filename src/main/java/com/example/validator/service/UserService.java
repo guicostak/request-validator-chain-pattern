@@ -11,12 +11,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.net.http.HttpClient;
 import java.util.List;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class UserService {
+
+    private final HttpClient httpClient;
 
     public UserEntity insertUser(UserRequestDto requestDto) throws ValidatorException {
         validateRequest(requestDto);
@@ -31,7 +34,6 @@ public class UserService {
                 .build();
 
         if (!violacoes.isEmpty()) {
-
             throw new ValidatorException("Erro ao completar a requisição",
                     Error.builder()
                             .detalhe("Erro ao validar o corpo da requisição")

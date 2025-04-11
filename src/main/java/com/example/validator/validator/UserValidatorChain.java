@@ -9,7 +9,7 @@ import java.util.List;
 
 public class UserValidatorChain {
 
-    private List<Violation> violations = new ArrayList<>();
+    private final List<Violation> violations = new ArrayList<>();
 
     public UserValidatorChain validateName(UserRequestDto user){
         if (user.nome() == null || user.nome().trim().isEmpty()) {
